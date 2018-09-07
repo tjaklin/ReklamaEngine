@@ -45,21 +45,20 @@ void GameObject::draw(){
     // Ova funkcija koristi mVBO informacije kako bi se nacrtao objekt u sceni
     
 	glBindBuffer( GL_ARRAY_BUFFER, mVBO );
-	// 1rst attribute buffer : vertices
+	// Postavljanje vertexa
 	glEnableVertexAttribArray( 0 );
 	glVertexAttribPointer( 0, 3, GL_FLOAT, GL_FALSE, 8*sizeof(GLfloat), (void*)0 );
 
-	// 2nd attribute buffer : Normalss
+	// Postavljanje normala
 	glEnableVertexAttribArray(1);
-//	glBindBuffer(GL_ARRAY_BUFFER, normalBuffer);
 	glVertexAttribPointer( 1, 2, GL_FLOAT, GL_FALSE, 8*sizeof(GLfloat), (void*) (3*sizeof(GLfloat)) );
 
-	// 3rd attribute buffer : UVs
+	// Postavljanje koordinata za teksture
+	// Ovo se ne koristi jer nema tekstura
 	glEnableVertexAttribArray(2);
-//	glBindBuffer(GL_ARRAY_BUFFER, uvBuffer);
 	glVertexAttribPointer( 2, 2, GL_FLOAT, GL_FALSE, 8*sizeof(GLfloat), (void*) (6*sizeof(GLfloat)) );
 
-	// Draw the triangle !
+	// DrawArrays crta scenu
 	glDrawArrays( GL_TRIANGLES, 0, mNUM_VERTICES );
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
