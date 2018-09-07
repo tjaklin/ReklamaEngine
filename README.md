@@ -4,7 +4,7 @@ U objects se nalaze modeli svih objekata.
 U shaders se nalaze svi parovi vertex i fragment shadera.
 U teksturi se nalaze Skybox teksture i obicne teksture za objekte.
 
-main.cpp je glavni dio programa.
+main.cpp je glavni dio programa. Iz programa se izlazi pritiskom na ESC tipku.
 
 Program se kompajlira preko:
 
