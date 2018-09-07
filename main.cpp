@@ -22,7 +22,7 @@ GLFWwindow* window;
 
 int main( void )
 {
-	// Initialise GLFW
+	// Inicijalizacija GLFW-a
 	if( !glfwInit() )
 	{
 		fprintf( stderr, "Failed to initialize GLFW\n" );
@@ -32,12 +32,12 @@ int main( void )
 	glfwWindowHint(GLFW_SAMPLES, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // To make MacOS happy; should not be needed
+	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	// Open a window and create its OpenGL context
+	// Otvaranje prozora + stvaranje OpenGL konteksta
     uint width = 1024; uint height = 768;
-	window = glfwCreateWindow( width, height, "Tutorial 05 - Textured Cube", NULL, NULL);
+	window = glfwCreateWindow( width, height, "ReklamaEngine", NULL, NULL);
 	if( window == NULL ){
 		fprintf( stderr, "Failed to open GLFW window. If you have an Intel GPU, they are not 3.3 compatible. Try the 2.1 version of the tutorials.\n" );
 		glfwTerminate();
@@ -45,14 +45,14 @@ int main( void )
 	}
 	glfwMakeContextCurrent(window);
 
-	// Initialize GLEW
-	glewExperimental = true; // Needed for core profile
+	// Inicijalizacija GLEW-a
+	glewExperimental = true;
 	if (glewInit() != GLEW_OK) {
 		fprintf(stderr, "Failed to initialize GLEW\n");
 		return -1;
 	}
 
-	// Ensure we can capture the escape key being pressed below
+	// Kako bi mogli koristiti tipkovnicu... S ESC tipkom se gasi program.
 	glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
 
 	Shader reflectionShaderID;
@@ -107,12 +107,13 @@ int main( void )
     if( ResourceManager::addPathToModel( "camera", "objects/camera/camera.fbx" ) )
         std::cout << "Stanje Modela camera: +" << std::endl;
 
-    // Dark blue background
+    	// Postavljanje pozadinske boje, koja se ne vidi zbog SkyBox-a
 	glClearColor(0.2f, 0.15f, 0.4f, 0.0f);
 
-	// Enable depth test
+	// Ukljucivanje depth test-a
 	glEnable(GL_DEPTH_TEST);
-	// Accept fragment if it closer to the camera than the former one
+	// Ova funkcija kaze OpenGL da, ukoliko postoji vise fragmenata na istoj lokaciji, gleda samo onog koji je najblizi
+	// kameri.
 	glDepthFunc(GL_LESS); 
 
     GLuint VertexArrayBasicID;
@@ -263,7 +264,7 @@ int* buffer = new int[width*height];
             // Close FFMPEG
             pclose(ffmpeg);    
             
-    // Cleanup VBO and shader
+    // Cleanup- Vertex array objekti se brisu
 	glDeleteVertexArrays(1, &VertexArrayBasicID);
     glDeleteVertexArrays(1, &VertexArraySkyboxID);
     
