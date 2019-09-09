@@ -1,4 +1,10 @@
 # ReklamaEngine
+Potrebni paketi:
++glew
++glfw
++glm
++assimp
+
 U common se nalaze sve koristene funkcije i knjiznice.
 U objects se nalaze modeli svih objekata.
 U shaders se nalaze svi parovi vertex i fragment shadera.
