@@ -1,4 +1,8 @@
 # ReklamaEngine
+
+## Prikaz rada programa:
+https://youtu.be/SA31d0v-f8c
+
 ## Potrebni paketi:
 - glew
 - glfw
