@@ -2,7 +2,7 @@
 
 ## Prikaz rada programa:
 // Video uklonjen
-https://youtu.be/SA31d0v-f8c
+- https://youtu.be/SA31d0v-f8c
 
 ## Potrebni paketi:
 - glew
